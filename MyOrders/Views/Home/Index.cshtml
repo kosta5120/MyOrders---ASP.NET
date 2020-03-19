@@ -1,11 +1,176 @@
-﻿@{
+﻿@using MyOrders.Models
+@model OrderDetailsModel
+@{
     ViewBag.Title = "Home Page";
+
 }
 
 <div class="jumbotron">
-    <h1>Your New Order</h1>
+    <h1>My New Order</h1>
 </div>
 
-<div class="row">
- 
+<div class="row-no-gutters">
+
+    <form>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="usr">From:</label>
+                @Html.TextBox("WebNmae", null, new { @class = "form-control", placeholder = "For Exampel: Aliexpress" })
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="usr">Order ID:</label>
+                @Html.TextBox("OrderID", null, new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="usr">Date of Order:</label>
+                @Html.TextBox("DateTime", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="usr">Tracking Number:</label>
+                @Html.TextBox("TrackNumber", null, new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="usr">Price:</label>
+                @Html.TextBox("Price", null, new { @class = "form-control " })
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="usr">Currency:</label>
+                @Html.DropDownListFor(m => m.Currency,
+                     new SelectList(Enum.GetValues(typeof(Currency))),
+                     new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+
+
+
+
+
+        @*<div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+
+                <label for="usr">Currency:</label>
+                @Html.DropDownListFor(m => m.Currency,
+                    new SelectList(Enum.GetValues(typeof(Currency))),
+                    new { @class = "btn btn-default" })
+
+            </div>
+            <div class="col-sm-3 my-1">
+                <button type="button" class="btn btn-success">Add</button>
+            </div>
+        </div>*@
+
+
+
+
+        @*<div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <label for="usr">Order ID:</label>
+                @Html.TextBox("OrderID", null, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <label for="usr">Date of Order:</label>
+                @Html.TextBox("DateTime", null, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <label for="usr">Tracking Number:</label>
+                @Html.TextBox("TrackNumber", null, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="form-row align-items-center col-xs-6">
+            <div class="col-sm-3 my-1">
+                <label for="usr">Price:</label>
+                @Html.TextBox("Price", null, new { @class = "form-control " })
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <label for="usr">Currency:</label>
+                @Html.DropDownListFor(m => m.Currency,
+                    new SelectList(Enum.GetValues(typeof(Currency))),
+                    new { @class = "btn btn-default" })
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <button type="button" class="btn btn-success">Add</button>
+            </div>
+        </div>*@
+    </form>
+
+
+    @*<div class="form-group">
+        <div class="container">
+            <label for="usr">From:</label>
+            @Html.TextBox("WebNmae", null, new { @class = "form-control", placeholder = "For Exampel: Aliexpress" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="container">
+            <label for="usr">Order ID:</label>
+            @Html.TextBox("OrderID", null, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="container">
+            <label for="usr">Date of Order:</label>
+            @Html.TextBox("DateTime", null, new { @class = "form-control" })
+        </div>
+    </div>*@
+
+    @*<div class="form-group">
+        <div class="container">
+            <div class='col-md-2'>
+                <div class="form-group">
+                    <div class='input-group date col-xs-6'>
+                        <label for="usr">Price:</label>
+                        @Html.TextBox("Price", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-1'>
+                <div class="form-group">
+                    <div class='input-group'>
+                        <label for="usr">Currency:</label>
+                        @Html.DropDownListFor(m => m.Currency,
+                            new SelectList(Enum.GetValues(typeof(Currency))),
+                            new { @class = "btn btn-default" })
+                        @Html.TextBox("Currency", null, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    @*<div class="form-group">
+        <div class="container">
+            <label for="usr">Tracking Number:</label>
+            @Html.TextBox("TrackNumber", null, new { @class = "form-control" })
+        </div>
+    </div>*@
+
+    @*<div class="form-group">
+        <div class="container">
+            <button type="button" class="btn btn-success">Add</button>
+        </div>
+
+    </div>*@
+
+
 </div>
