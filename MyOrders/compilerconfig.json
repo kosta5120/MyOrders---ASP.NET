@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/Sass/WelcomPage.css",
+    "inputFile": "Content/Sass/WelcomPage.scss"
+  },
+  {
+    "outputFile": "Scripts/SignLog.es5.js",
+    "inputFile": "Scripts/SignLog.js"
+  }
+]
