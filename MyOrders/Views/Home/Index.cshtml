@@ -1,176 +1,62 @@
-﻿@using MyOrders.Models
-@model OrderDetailsModel
-@{
+﻿@{
     ViewBag.Title = "Home Page";
-
 }
 
-<div class="jumbotron">
-    <h1>My New Order</h1>
+<div>
+    <h1 class="header-signup-login">
+        Welcom To My Orders
+    </h1>
 </div>
 
-<div class="row-no-gutters">
+<div class="form">
+    <ul class="tab-group">
+        <il class="active"><a id="tab-signup">Sign Up</a></il>
+        <il><a id="tab-login">Log In</a></il>
+    </ul>
 
-    <form>
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="usr">From:</label>
-                @Html.TextBox("WebNmae", null, new { @class = "form-control", placeholder = "For Exampel: Aliexpress" })
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="usr">Order ID:</label>
-                @Html.TextBox("OrderID", null, new { @class = "form-control" })
+    <div>
+        <div id="signup">
+            <h1>Sign Up for Free</h1>
 
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="usr">Date of Order:</label>
-                @Html.TextBox("DateTime", null, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="usr">Tracking Number:</label>
-                @Html.TextBox("TrackNumber", null, new { @class = "form-control" })
+            <form action="/" method="post">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <input type="text" required autocomplete="off" placeholder="User Name*" />
+                    </div>
 
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="usr">Price:</label>
-                @Html.TextBox("Price", null, new { @class = "form-control " })
-
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="usr">Currency:</label>
-                @Html.DropDownListFor(m => m.Currency,
-                     new SelectList(Enum.GetValues(typeof(Currency))),
-                     new { @class = "btn btn-default" })
-
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
-
-
-
-
-
-        @*<div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-
-                <label for="usr">Currency:</label>
-                @Html.DropDownListFor(m => m.Currency,
-                    new SelectList(Enum.GetValues(typeof(Currency))),
-                    new { @class = "btn btn-default" })
-
-            </div>
-            <div class="col-sm-3 my-1">
-                <button type="button" class="btn btn-success">Add</button>
-            </div>
-        </div>*@
-
-
-
-
-        @*<div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-                <label for="usr">Order ID:</label>
-                @Html.TextBox("OrderID", null, new { @class = "form-control" })
-            </div>
-
-        </div>
-        <div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-                <label for="usr">Date of Order:</label>
-                @Html.TextBox("DateTime", null, new { @class = "form-control" })
-            </div>
-
-        </div>
-        <div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-                <label for="usr">Tracking Number:</label>
-                @Html.TextBox("TrackNumber", null, new { @class = "form-control" })
-            </div>
-
-        </div>
-        <div class="form-row align-items-center col-xs-6">
-            <div class="col-sm-3 my-1">
-                <label for="usr">Price:</label>
-                @Html.TextBox("Price", null, new { @class = "form-control " })
-            </div>
-        </div>
-
-        <div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-                <label for="usr">Currency:</label>
-                @Html.DropDownListFor(m => m.Currency,
-                    new SelectList(Enum.GetValues(typeof(Currency))),
-                    new { @class = "btn btn-default" })
-            </div>
-        </div>
-        <div class="form-row align-items-center">
-            <div class="col-sm-3 my-1">
-                <button type="button" class="btn btn-success">Add</button>
-            </div>
-        </div>*@
-    </form>
-
-
-    @*<div class="form-group">
-        <div class="container">
-            <label for="usr">From:</label>
-            @Html.TextBox("WebNmae", null, new { @class = "form-control", placeholder = "For Exampel: Aliexpress" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="container">
-            <label for="usr">Order ID:</label>
-            @Html.TextBox("OrderID", null, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="container">
-            <label for="usr">Date of Order:</label>
-            @Html.TextBox("DateTime", null, new { @class = "form-control" })
-        </div>
-    </div>*@
-
-    @*<div class="form-group">
-        <div class="container">
-            <div class='col-md-2'>
-                <div class="form-group">
-                    <div class='input-group date col-xs-6'>
-                        <label for="usr">Price:</label>
-                        @Html.TextBox("Price", null, new { @class = "form-control" })
-
+                    <div class="field-wrap">
+                        <input type="text" required autocomplete="off" placeholder="Last Name*"/>
                     </div>
                 </div>
-            </div>
-            <div class='col-md-1'>
-                <div class="form-group">
-                    <div class='input-group'>
-                        <label for="usr">Currency:</label>
-                        @Html.DropDownListFor(m => m.Currency,
-                            new SelectList(Enum.GetValues(typeof(Currency))),
-                            new { @class = "btn btn-default" })
-                        @Html.TextBox("Currency", null, new { @class = "form-control" })
-                    </div>
+                <div class="field-wrap">
+                    <input type="email" required autocomplete="off" placeholder="Email Address*"/>
                 </div>
-            </div>
-        </div>
-    </div>*@
-    @*<div class="form-group">
-        <div class="container">
-            <label for="usr">Tracking Number:</label>
-            @Html.TextBox("TrackNumber", null, new { @class = "form-control" })
-        </div>
-    </div>*@
 
-    @*<div class="form-group">
-        <div class="container">
-            <button type="button" class="btn btn-success">Add</button>
+                <div class="field-wrap">
+                    <input type="password" required autocomplete="off" placeholder="Set A Password*" />
+                </div>
+                <button class="button" type="submit" /> Get Started</button>
+            </form>
         </div>
 
-    </div>*@
+        <div id="login">
+            <h1>Welcom Back</h1>
 
+            <form action="/" method="post">
 
+                <div class="field-wrap">
+                   
+                    <input type="email" required autocomplete="off" placeholder="Email Address"/>
+                </div>
+
+                <div class="field-wrap">
+                    <input type="password" required autocomplete="off" placeholder="Password"/>
+                </div>
+
+                <p class="forgot"><a href="#">Forget Password?</a></p>
+
+                <button class="button">Log In</button>
+            </form>
+        </div>
+    </div>
 </div>
