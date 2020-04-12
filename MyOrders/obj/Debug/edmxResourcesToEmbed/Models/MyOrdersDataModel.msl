@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyOrdersModelStoreContainer" CdmEntityContainer="MyOrdersEntities">
+    <EntitySetMapping Name="LogIn_SignUp">
+      <EntityTypeMapping TypeName="MyOrdersModel.LogIn_SignUp">
+        <MappingFragment StoreEntitySet="LogIn/SignUp">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirsName" ColumnName="FirsName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

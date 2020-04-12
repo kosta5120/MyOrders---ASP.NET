@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyOrdersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MyOrders.dbo.LogIn/SignUp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LogIn/SignUp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirsName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="MyOrdersModelStoreContainer">
+    <EntitySet Name="LogIn/SignUp" EntityType="Self.LogIn/SignUp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LogIn/SignUp].[ID] AS [ID], 
+    [LogIn/SignUp].[FirsName] AS [FirsName], 
+    [LogIn/SignUp].[LastName] AS [LastName], 
+    [LogIn/SignUp].[EmailAddress] AS [EmailAddress], 
+    [LogIn/SignUp].[Password] AS [Password]
+    FROM [dbo].[LogIn/SignUp] AS [LogIn/SignUp]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

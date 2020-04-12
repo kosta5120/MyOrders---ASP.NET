@@ -4,6 +4,7 @@ document.getElementById("tab-signup").addEventListener("click", LogIn);
 document.getElementById("tab-login").addEventListener("click", SignUp);
 
 
+
 document.getElementById("login").style.display = "none";
 
 function SignUp() {
@@ -32,3 +33,29 @@ function LogIn() {
 
     
 }
+function checkEmail() {
+    var e = $("#EmailAddress").val();
+    var button = document.getElementById("Submit1");
+    $.ajax({
+        type: 'GET',
+        url: '/Home/EmailExistingCheck',
+        datatype: 'json',
+        data: { emailAddress: e },
+        contentType: 'aplication/json; charset=utf-8',
+        success: function (result) {
+            var mass = $("#ErrorMass");
+            if (!result) {
+                mass.html("This Email already taken.").css('color', 'red');
+                button.disabled = true;
+            }
+            else {
+                mass.html("");
+                button.disabled = false;
+            }
+                
+
+        }
+    });
+};
+
+

@@ -3,28 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyOrders.Models;
+using MyOrders.Dal;
 
 namespace MyOrders.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        MyOrdersDal dal = new MyOrdersDal();
+
+        public ActionResult LoginSignup()
         {
             return View();
         }
 
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
+        [HttpGet]
+        public JsonResult EmailExistingCheck(string emailAddress)
+        {
+            
+            bool result = !dal.Users.ToList().Exists(model => model.EmailAddress.Equals(emailAddress, StringComparison.CurrentCultureIgnoreCase));
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
-        //    return View();
-        //}
 
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
+        [HttpPost]
+        public ActionResult Submit(login_Signup ls)
+        {
+            if (ModelState.IsValid)
+            {
+                ls.Password = new EncryptDecrypt().Encript(ls.Password);
+                ls.FirstName = ls.FirstName.ToLower();
+                ls.LastName = ls.LastName.ToLower();
+                ls.EmailAddress = ls.EmailAddress.ToLower();
+                dal.Users.Add(ls);
+                dal.SaveChanges();
+                return View("LoginSignup");
+            }
+            else
+            {
+                //ViewBag.Message = "User with this Email Already Exist";
+                ls.Password = "";
+                return View("LoginSignup");
 
-        //    return View();
-        //}
+            }
+
+
+            //return View("LoginSignup");
+        }
+
+       
+
     }
 }
