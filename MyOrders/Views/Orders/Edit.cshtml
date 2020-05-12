@@ -1,0 +1,96 @@
+﻿@model MyOrders.Models.Orders
+
+@{
+    Layout = null;
+}
+
+
+
+<div class="modal-dialog  modal-lg role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @using (Html.BeginForm("Update", "Orders", FormMethod.Post))
+        {
+            <div class="modal-body">
+                <div class="container-fluid">
+
+
+                    <div class="form-row align-items-center">
+                        <input type="hidden" name="ID" value="@ViewBag.Id" />
+                        <input type="hidden" name="UserID" value="@ViewBag.userId" />
+                        @*@Html.TextBox("ID", null, new { type = "hidden", value = ViewBag.Id })
+                            @Html.TextBox("UserID", null, new { type = "hidden", value = ViewBag.userId })*@
+                        <div class="form-group col-md-3">
+                            <label>Title</label>
+                            @Html.TextBoxFor(model => model.Title, null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Title*" })
+                        </div>
+                        <dive class="form-group col-md-3">
+                            <label>Description</label>
+                            @Html.TextBoxFor(model => model.Description, null, new { @class = "form-control", type = "text", autocomplete = "off", placeholder = "Description" })
+                        </dive>
+                        <div class="form-group col-md-3">
+                            <label>Dtae Of Order*</label>
+                            @Html.TextBoxFor(model => model.DateOrder, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", required = "required", autocomplete = "off", placeholder = "Dtae Of Order*" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Price*</label>
+                            @Html.TextBoxFor(model => model.Cost, null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Price*" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>From*</label>
+                            @Html.TextBoxFor(model => model.WebName, null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "From*" })
+                        </div>
+                        <div class="form-group col-md-9">
+                            <label>Tracking Number*</label>
+                            @Html.TextBoxFor(model => model.TrackingNumber, null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Tracking Number*" })
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                @*<button type="submit" class="btn btn-primary btn-block" value="">Submit</button>*@
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        }
+    </div>
+</div>
+
+@*<div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit Order</h5>
+        </div>
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="row">
+                    Hello
+                </div>
+            </div>
+            Hello
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>*@
+
+<script>
+    $(document).ready(function () {
+        $('.mdb-select').materialSelect();
+    });
+</script>

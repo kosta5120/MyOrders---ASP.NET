@@ -1,0 +1,151 @@
+﻿@model MyOrders.Models.Orders
+
+@{
+    Layout = null;
+    var i = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+@*<link href="~/Content/Sass/OrdersPage.min.css" rel="stylesheet" />*@
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Orders</title>
+    <link href="~/Content/Sass/OrdersPage.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="title">
+        <h1> List of Orders</h1>
+    </div>
+    <div class="container orders">
+        @*<form action="AddNewOrder" method="post">*@
+        @using (Html.BeginForm("AddNewOrder", "Orders", FormMethod.Post))
+        {
+            <div class="form-row align-items-center">
+                <input type="hidden" name="UserID" id="UserID" value="@ViewBag.userId" />
+                @*@Html.TextBox("UserID", null, new { type = "hidden", value = ViewBag.id })*@
+                <div class="form-group col-md-3">
+                    @Html.TextBox("Title", null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Title*" })
+                </div>
+                <dive class="form-group col-md-3">
+                    @Html.TextBox("Description", null, new { @class = "form-control", type = "text", autocomplete = "off", placeholder = "Description" })
+                </dive>
+                <div class="form-group col-md-3">
+                    @Html.TextBox("DateOrder", null, new { @class = "form-control", type = "date", required = "required", autocomplete = "off", placeholder = "Dtae Of Order*" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.TextBox("Cost", null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Price*" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.TextBox("WebName", null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "From*" })
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.TextBox("TrackingNumber", null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Tracking Number*" })
+                </div>
+
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-primary btn-block" value="">Submit</button>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+
+
+    <div class="table-orders">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">From</th>
+                    <th scope="col">Tracking Number</th>
+                    <th scope="col">Transit</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var data in @ViewBag.Orders)
+                {
+
+                    i++;
+                    var transitDays = string.Empty;
+                    DateTime orderDate = DateTime.Parse(data.DateOrder.ToString());
+                    DateTime now = DateTime.Now;
+                    TimeSpan elapsed = now.Subtract(DateTime.Parse(data.DateOrder.ToString()));
+                    var months = Math.Round(now.Subtract(orderDate).Days / (365.25 / 12), MidpointRounding.AwayFromZero);
+                    var days = Math.Round(elapsed.TotalDays, MidpointRounding.AwayFromZero);
+
+
+                    switch (months)
+                    {
+                        case 1:
+                            transitDays = "a month ago";
+                            break;
+                        default:
+                            if (months == 0)
+                            {
+                                transitDays = $"{days.ToString()} Days";
+                            }
+                            else
+                            {
+                                transitDays = $"{months} months ago";
+                            }
+
+                            break;
+                    }
+
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@data.Title</td>
+                        <td>@data.Description</td>
+                        <td>@data.DateOrder.ToString("dd/MM/yyyy")</td>
+                        <td>@data.Cost</td>
+                        <td>@data.WebName</td>
+                        <td>@data.TrackingNumber</td>
+                        <td>@transitDays </td>
+                        <td>@Html.ActionLink("Tracking", "")</td>
+                        <td>
+                            <a href="#" class="Edit" id="Edit" value='@data.ID'>Edit</a> |
+                            @Html.ActionLink("Delete", "Delete", new { id = data.ID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="More" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true" data-url='@Url.Action("Edit", "Orders")'></div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/Orders.js"></script>
+    @*<script>
+            $(document).ready(function () {
+                $('.Edit').click(function () {
+                    alert('Kosta');
+                    var url = $('#More').data('url');
+                    $.get(url, function (data) {
+                        $("#More").html(data);
+                        $("#More").modal('show');
+                    });
+                });
+            });
+        </script>*@
+
+</body>
+
+</html>
