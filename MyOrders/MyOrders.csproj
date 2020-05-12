@@ -130,21 +130,31 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Dal\MyOrdersDal.cs" />
+    <Compile Include="Filters\UserAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EncryptDecrypt.cs" />
     <Compile Include="Models\login_Signup.cs" />
     <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\OrdersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Orders\MyOrdersController.cs" />
+    <Compile Include="ViewModel\ChackUserToLogIn.cs" />
+    <Compile Include="ViewModel\GetUserID.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Sass\OrdersPage.css">
+      <DependentUpon>OrdersPage.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\OrdersPage.min.css">
+      <DependentUpon>OrdersPage.css</DependentUpon>
+    </Content>
     <Content Include="Content\Sass\WelcomPage.css">
       <DependentUpon>WelcomPage.scss</DependentUpon>
     </Content>
@@ -162,6 +172,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\Sass\OrdersPage.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -175,6 +186,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Orders.js" />
     <Content Include="Scripts\SignLog.es5.js">
       <DependentUpon>SignLog.js</DependentUpon>
     </Content>
@@ -194,11 +206,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\LoginSignup.cshtml" />
+    <Content Include="Views\Orders\Orders.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModel\" />
-    <Folder Include="Views\MyOrders\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

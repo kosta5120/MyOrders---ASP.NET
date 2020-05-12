@@ -20,7 +20,7 @@
         <div id="signup">
             <h1>Sign Up for Free</h1>
 
-            <form action="Submit" method="post">
+            <form action="SignUp" method="post">
 
                 <div class="top-row">
                     <div class="field-wrap">
@@ -35,7 +35,7 @@
                 <div class="field-wrap">
                     @Html.TextBox("EmailAddress", null, new { type = "email", required = "required", autocomplete = "off", placeholder = "Email Address*", onkeyup = "checkEmail()" })
                     <div class="row">
-                        <label ></label>
+                        <label></label>
                         <div class="col-sm-10">
                             <p id="ErrorMass" />
                         </div>
@@ -43,30 +43,37 @@
                 </div>
 
                 <div class="field-wrap">
-                    @Html.TextBox("Password", null, new { type = "password", required = "required", autocomplete = "off", placeholder = "Set A Password*" })
+                    @Html.TextBox("Password", null, new { type = "password", required = "required", autocomplete = "off", placeholder = "Set A Password*"})
                 </div>
-                <button id="Submit1" class="button" type="submit" > Get Started</button>
+                <button id="Submit1" class="button" type="submit"> Get Started</button>
             </form>
         </div>
 
         <div id="login">
             <h1>Welcom Back</h1>
 
-            <form action="/" method="post">
+            @*<form action="logIn" method="post">*@
 
-                <div class="field-wrap">
-                    @Html.TextBox("EmailAddress", null, new { ytpe = "email", required = "required", autoccomplete = "off", placeholder = "Email Address*" })
+            <div class="field-wrap">
+                @Html.TextBox("EmailAddress", null, new { type = "email", required = "required", autocomplete = "off", placeholder = "Email Address*", id = "EmailLogIn" })
+            </div>
+
+            <div class="field-wrap">
+                @Html.TextBox("Password", null, new { type = "password", required = "required", autocomplate = "off", placeholder = "Password*", id = "passLogIn" })
+
+            </div>
+
+            <p class="forgot"><a href="#">Forget Password?</a></p>
+            
+
+            <button class="button" id="Submit2" type="submit">Log In</button>
+            <div class="row text-center">
+                <label class="col-md-1"></label>
+                <div class="col-sm-10">
+                    <p id="ErrorMassLogIn" />
                 </div>
-
-                <div class="field-wrap">
-                    @Html.TextBox("Password", null, new { type = "password", required = "required", autocomplate = "off", placeholder = "Password*" })
-
-                </div>
-
-                <p class="forgot"><a href="#">Forget Password?</a></p>
-
-                <button class="button" >Log In</button>
-            </form>
+            </div>
+            @*</form>*@
         </div>
     </div>
 </div>
