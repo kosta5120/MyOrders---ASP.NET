@@ -6,5 +6,9 @@
   {
     "outputFile": "Scripts/SignLog.es5.js",
     "inputFile": "Scripts/SignLog.js"
+  },
+  {
+    "outputFile": "Content/Sass/OrdersPage.css",
+    "inputFile": "Content/Sass/OrdersPage.scss"
   }
 ]

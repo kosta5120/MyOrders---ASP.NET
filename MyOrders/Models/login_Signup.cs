@@ -10,6 +10,8 @@ namespace MyOrders.Models
     public class login_Signup
     {
         [Key]
+        public int ID { get; set; }
+        
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -18,5 +20,6 @@ namespace MyOrders.Models
         public string EmailAddress { get; set; }
         [Required]
         public string Password { get; set; }
+
     }
 }

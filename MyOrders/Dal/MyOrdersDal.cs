@@ -15,5 +15,6 @@ namespace MyOrders.Dal
             modelBuilder.Entity<login_Signup>().ToTable("LogIn/SignUp");
         }
         public DbSet<login_Signup> Users { get; set; }
+        public DbSet<Orders> Orders { get; set; }
     }
 }
