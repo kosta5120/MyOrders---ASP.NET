@@ -50,8 +50,8 @@ namespace MyOrders.Controllers
                 if (result && _id != string.Empty)
                     Session["UserID"] = Guid.NewGuid();
 
-                int id = int.Parse(_id);
-
+                int id = int.Parse(_id); 
+               // return Redirect("/Orders/Orders/" + id);
                 return Redirect("/Orders/Orders/" + id);
             }
             else

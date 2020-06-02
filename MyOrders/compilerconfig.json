@@ -10,5 +10,9 @@
   {
     "outputFile": "Content/Sass/OrdersPage.css",
     "inputFile": "Content/Sass/OrdersPage.scss"
+  },
+  {
+    "outputFile": "Content/Sass/Header.css",
+    "inputFile": "Content/Sass/Header.scss"
   }
 ]

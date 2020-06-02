@@ -18,5 +18,6 @@ namespace MyOrders.Models
         public double Cost { get; set; }
         public string WebName { get; set; }
         public string TrackingNumber { get; set; }
+        public  byte Provided { get; set; }
     }
 }

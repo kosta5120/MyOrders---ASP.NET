@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Data.Entity;
 using Microsoft.Ajax.Utilities;
 using MyOrders.ViewModel;
+using System.Net.Http;
 
 namespace MyOrders.Controllers
 {
@@ -17,21 +18,28 @@ namespace MyOrders.Controllers
     public class OrdersController : Controller
     {
         MyOrdersDal dal = new MyOrdersDal();
+        GetUserID userID = new GetUserID();
         // GET: MyOrders
 
         [UserAuthenticationFilter]
+        [HttpGet]
         public ActionResult Orders(int id)
         {
             ViewBag.userId = id;
-            ViewBag.Orders = dal.Orders.Where(model => model.UserID == id).ToList();
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("OrdersAPI/" + id.ToString()).Result;
+            List<Orders> orders = new List<Orders>();
+            orders = response.Content.ReadAsAsync<List<Orders>>().Result;
+            ViewBag.Orders = orders;
             return View();
         }
+
         [HttpPost]
         public ActionResult AddNewOrder(Orders orders)
         {
-           
-            dal.Orders.Add(orders);
-            dal.SaveChanges();
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("OrdersAPI", orders).Result;
+
+                //dal.Orders.Add(orders);
+                //dal.SaveChanges();
 
             return Redirect("/Orders/Orders/" + orders.UserID);
         }
@@ -55,7 +63,7 @@ namespace MyOrders.Controllers
         }
         public ActionResult Delete(Orders orders)
         {
-            GetUserID userID = new GetUserID();
+            //GetUserID userID = new GetUserID();
 
             userID.UserID = orders.ID;
                 
@@ -63,5 +71,33 @@ namespace MyOrders.Controllers
             dal.SaveChanges();
             return Redirect("/Orders/Orders/" + userID.UserID);
         }
+        
+        public ActionResult Provided(Orders orders)
+        {
+            var url = string.Empty;
+            using (dal)
+            {
+                if(orders.ID != 0)
+                {
+                    orders = dal.Orders.SingleOrDefault(x => x.ID == orders.ID);
+                    if (orders != null)
+                    {
+                        orders.Provided = 1;
+                        dal.Entry(orders).State = EntityState.Modified;
+                        dal.SaveChanges();
+                        url = "/Orders/Orders/" + userID.UserID;
+                    }
+                }
+                else
+                {
+                    
+                    url = "/Orders/Orders/" + userID.UserID;
+                }
+                
+            }
+            return Redirect(url);
+        }
+
+        
     }
 }

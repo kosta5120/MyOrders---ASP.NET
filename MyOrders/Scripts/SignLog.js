@@ -1,4 +1,4 @@
-﻿3
+﻿
 
 document.getElementById("tab-signup").addEventListener("click", LogIn);
 document.getElementById("tab-login").addEventListener("click", SignUp);
@@ -82,6 +82,7 @@ function checkLogin() {
             else {
                 mess.html("");
                 var url = '/Orders/Orders/' + data.id;
+                
                 window.location.href = url;
             }
                 

@@ -1,7 +1,7 @@
 ﻿@model MyOrders.Models.Orders
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPageOrders.cshtml";
 }
 
 
@@ -24,7 +24,7 @@
                         <input type="hidden" name="ID" value="@ViewBag.Id" />
                         <input type="hidden" name="UserID" value="@ViewBag.userId" />
                         @*@Html.TextBox("ID", null, new { type = "hidden", value = ViewBag.Id })
-                            @Html.TextBox("UserID", null, new { type = "hidden", value = ViewBag.userId })*@
+        @Html.TextBox("UserID", null, new { type = "hidden", value = ViewBag.userId })*@
                         <div class="form-group col-md-3">
                             <label>Title</label>
                             @Html.TextBoxFor(model => model.Title, null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "Title*" })
