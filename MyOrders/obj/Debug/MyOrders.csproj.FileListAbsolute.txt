@@ -129,6 +129,7 @@ C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\EntityFramework
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\Newtonsoft.Json.dll
+C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Net.Http.Formatting.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.Helpers.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.Mvc.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.Optimization.dll
@@ -139,6 +140,7 @@ C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.WebP
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\WebGrease.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\EntityFramework.xml
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\EntityFramework.SqlServer.xml
+C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Net.Http.Formatting.xml
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.Helpers.xml
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.Mvc.xml
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\bin\System.Web.Optimization.xml
@@ -153,4 +155,3 @@ C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\obj\Debug\MyOrders.
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\obj\Debug\MyOrders.csproj.CopyComplete
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\obj\Debug\MyOrders.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\obj\Debug\MyOrders.pdb
-C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\MyOrders\obj\Debug\MyOrders.csprojAssemblyReference.cache

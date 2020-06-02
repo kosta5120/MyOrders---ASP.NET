@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿document.getElementById("myPrivided").addEventListener("click", myProvided);
+
+$(document).ready(function () {
     $('.Edit').click(function () {
         var id = $(this).attr('value');
 
@@ -25,3 +27,25 @@ $(document).ready(function () {
         });
     });
 });
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+//$(document).ready(function () {
+//    $("#myInput").on("keyup", function () {
+//        var value = $(this).val().toLowerCase();
+//        $("#ordersTable tr").filter(function () {
+//            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//        });
+//    });
+//});
+
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+
+function myProvided() {
+    var url = window.location.search;
+    var params = URLSearchParams()
+}
