@@ -14,7 +14,7 @@
     @using (Html.BeginForm("AddNewOrder", "Orders", FormMethod.Post))
     {
         <div class="form-row align-items-center">
-            <input type="hidden" name="UserID" id="UserID" value="@ViewBag.userId" />
+            @*<input type="hidden" name="UserID" id="UserID" value="" />*@
             <input type="hidden" name="Provided" id="Provided" value="0" />
             @*@Html.TextBox("UserID", null, new { type = "hidden", value = ViewBag.id })*@
             <div class="form-group col-md-3">
@@ -27,7 +27,7 @@
                 @Html.TextBox("DateOrder", null, new { @class = "form-control", type = "date", required = "required", autocomplete = "off", placeholder = "Dtae Of Order*" })
             </div>
             <div class="form-group col-md-3">
-                @Html.TextBox("Cost", null, new { @class = "form-control", type = "number", required = "required", autocomplete = "off", placeholder = "Price*" })
+                @Html.TextBox("Cost", null, new { @class = "form-control", type = "number", required = "required", autocomplete = "off", placeholder = "Price*", step = "0.01", min="0" })
             </div>
             <div class="form-group col-md-3">
                 @Html.TextBox("WebName", null, new { @class = "form-control", type = "text", required = "required", autocomplete = "off", placeholder = "From*" })
@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary btn-block" value="">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block" name="UserID" value="@ViewBag.userId">Submit</button>
             </div>
 
         </div>
@@ -109,7 +109,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="#" class="Edit" id="Edit" value='@data.ID'>Edit</a> |
+                        <a href="" class="Edit" id="Edit" value='@data.ID'>Edit</a> |
                         @Html.ActionLink("Delete", "Delete", new { id = data.ID }) |
                         @Html.ActionLink("Provided", "Provided", new { id = data.ID, val = 1 })
                     </td>
@@ -119,7 +119,4 @@
     </table>
 </div>
 
-
-        
-
-        <div class="modal fade" id="More" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true" data-url='@Url.Action("Edit", "Orders")'></div>
+<div class="modal fade" id="More" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true" data-url='@Url.Action("Edit", "Orders")'></div>

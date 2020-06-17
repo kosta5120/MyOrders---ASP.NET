@@ -64,8 +64,8 @@ C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\bin\System.Net.Http.F
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\bin\System.Web.Http.xml
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\bin\System.Web.Http.WebHost.xml
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\obj\Debug\WebAPI.pdb
+C:\Users\KOSTA\Desktop\My projects\ASP.NET\MyOrders\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache

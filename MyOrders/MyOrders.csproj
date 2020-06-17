@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Dal\MyOrdersDal.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="ViewModel\GetUserID.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ACC\PackageIcon.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -165,6 +167,12 @@
     <Content Include="Content\dataTables.semanticui.min.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\Sass\Error.css">
+      <DependentUpon>Error.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\Error.min.css">
+      <DependentUpon>Error.css</DependentUpon>
+    </Content>
     <Content Include="Content\Sass\Header.css">
       <DependentUpon>Header.scss</DependentUpon>
     </Content>
@@ -196,6 +204,7 @@
     </None>
     <Content Include="Content\Sass\OrdersPage.scss" />
     <Content Include="Content\Sass\Header.scss" />
+    <Content Include="Content\Sass\Error.scss" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />

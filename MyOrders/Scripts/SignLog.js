@@ -1,5 +1,4 @@
 ﻿
-
 document.getElementById("tab-signup").addEventListener("click", LogIn);
 document.getElementById("tab-login").addEventListener("click", SignUp);
 document.getElementById("Submit2").addEventListener("click", checkLogin);
@@ -89,6 +88,5 @@ function checkLogin() {
         }
     });
 }
-
 
 

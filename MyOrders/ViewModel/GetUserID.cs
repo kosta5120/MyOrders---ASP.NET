@@ -30,7 +30,7 @@ namespace MyOrders.ViewModel
                                     where orders.ID == _id
                                     select orders.UserID;
 
-                        _id = query.First();
+                        _id = query.First().Value;
                     }
                 }
             }
