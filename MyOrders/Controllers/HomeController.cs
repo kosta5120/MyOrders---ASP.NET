@@ -12,7 +12,7 @@ namespace MyOrders.Controllers
 {
     public class HomeController : Controller
     {
-        MyOrdersDal dal = new MyOrdersDal();
+        public MyOrdersDal dal = new MyOrdersDal();
         public ActionResult LoginSignup()
         {
             return View();
@@ -37,7 +37,7 @@ namespace MyOrders.Controllers
             if (ModelState.IsValid)
             {
                 var check = new ChackUserToLogIn();
-                var _id = string.Empty;
+                string _id;
                 ls.Password = new EncryptDecrypt().Encript(ls.Password);
                 ls.FirstName = ls.FirstName.ToLower();
                 ls.LastName = ls.LastName.ToLower();

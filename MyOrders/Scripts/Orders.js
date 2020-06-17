@@ -1,7 +1,8 @@
-﻿document.getElementById("myPrivided").addEventListener("click", myProvided);
+﻿//document.getElementById("myPrivided").addEventListener("click", myProvided);
 
 $(document).ready(function () {
-    $('.Edit').click(function () {
+    $('.Edit').click(function (e) {
+        e.preventDefault();
         var id = $(this).attr('value');
 
         var url = $('#More').data('url');

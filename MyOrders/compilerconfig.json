@@ -14,5 +14,9 @@
   {
     "outputFile": "Content/Sass/Header.css",
     "inputFile": "Content/Sass/Header.scss"
+  },
+  {
+    "outputFile": "Content/Sass/Error.css",
+    "inputFile": "Content/Sass/Error.scss"
   }
 ]

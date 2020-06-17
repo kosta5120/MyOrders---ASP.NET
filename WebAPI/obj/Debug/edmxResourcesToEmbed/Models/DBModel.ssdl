@@ -12,8 +12,6 @@ warning 6002: The table/view 'MyOrders.dbo.LogIn/SignUp' does not have a primary
     <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'MyOrders.dbo.Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="ID" />
@@ -29,6 +27,7 @@ warning 6002: The table/view 'MyOrders.dbo.Orders' does not have a primary key d
     <Property Name="Provided" Type="tinyint" />
   </EntityType>
   <EntityContainer Name="MyOrdersModelStoreContainer">
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LogIn/SignUp" EntityType="Self.LogIn/SignUp" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [LogIn/SignUp].[ID] AS [ID], 
@@ -37,19 +36,6 @@ warning 6002: The table/view 'MyOrders.dbo.Orders' does not have a primary key d
     [LogIn/SignUp].[EmailAddress] AS [EmailAddress], 
     [LogIn/SignUp].[Password] AS [Password]
     FROM [dbo].[LogIn/SignUp] AS [LogIn/SignUp]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Orders].[ID] AS [ID], 
-    [Orders].[Title] AS [Title], 
-    [Orders].[Description] AS [Description], 
-    [Orders].[DateOrder] AS [DateOrder], 
-    [Orders].[Cost] AS [Cost], 
-    [Orders].[WebName] AS [WebName], 
-    [Orders].[TrackingNumber] AS [TrackingNumber], 
-    [Orders].[UserID] AS [UserID], 
-    [Orders].[Provided] AS [Provided]
-    FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

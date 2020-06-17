@@ -11,16 +11,13 @@ namespace WebAPI.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Order
     {
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DateOrder { get; set; }
+        public Nullable<System.DateTime> DateOrder { get; set; }
         public Nullable<double> Cost { get; set; }
         public string WebName { get; set; }
         public string TrackingNumber { get; set; }

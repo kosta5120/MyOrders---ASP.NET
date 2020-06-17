@@ -6,6 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.Models;
@@ -15,7 +17,7 @@ namespace WebAPI.Controllers
     public class OrdersAPIController : ApiController
     {
         private MyOrdersEntities db = new MyOrdersEntities();
-
+        
         // GET: api/OrdersAPI
         public IQueryable<Order> GetOrders()
         {
@@ -27,7 +29,7 @@ namespace WebAPI.Controllers
         public IHttpActionResult GetOrder(int id)
         {
             var order = db.Orders.Where(x => x.UserID == id).ToList();
-            
+
             if (order == null)
             {
                 return NotFound();
@@ -36,9 +38,20 @@ namespace WebAPI.Controllers
             return Ok(order);
         }
 
+        //GET: api/OrdersAPI?OrderId=
+        [ResponseType(typeof(void))]
+        public IHttpActionResult GetUserID(int OrderId)
+        {
+            var order = db.Orders.Find(OrderId);
+
+            return Ok(order);
+        }
+
+
         // PUT: api/OrdersAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutOrder(int id, Order order)
+
+        public IHttpActionResult PutOrder(int id, [FromBody]Order order)
         {
             if (!ModelState.IsValid)
             {
@@ -75,15 +88,10 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             db.Orders.Add(order);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = order.ID }, order);
+            return Ok(order);
         }
 
         // DELETE: api/OrdersAPI/5
@@ -109,7 +117,7 @@ namespace WebAPI.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        
+
         }
 
         private bool OrderExists(int id)
