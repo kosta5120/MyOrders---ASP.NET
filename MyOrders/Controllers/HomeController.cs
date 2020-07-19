@@ -48,11 +48,12 @@ namespace MyOrders.Controllers
                 var result = check.CheckUser(dal, ls.Password, ls.EmailAddress, out _id);
                 
                 if (result && _id != string.Empty)
-                    Session["UserID"] = Guid.NewGuid();
-
-                int id = int.Parse(_id); 
-               // return Redirect("/Orders/Orders/" + id);
-                return Redirect("/Orders/Orders/" + id);
+                {
+                    Session["UserID"] = _id /*Guid.NewGuid()*/;
+                 
+                }
+                int id = int.Parse(_id);
+                return RedirectToAction("Orders", "Orders", null);
             }
             else
             {
@@ -71,7 +72,7 @@ namespace MyOrders.Controllers
             var data = new { result, id };
 
             if (data.result && data.id != string.Empty)
-                Session["UserID"] = Guid.NewGuid();
+                Session["UserID"] = data.id;
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }

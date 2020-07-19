@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Web.DynamicData;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.Models;
@@ -47,6 +48,13 @@ namespace WebAPI.Controllers
             return Ok(order);
         }
 
+        //GET: api/OrdersAPI?UserId=
+        [ResponseType(typeof(void))]
+        public IHttpActionResult GetProvidedOrders(int UserId)
+        {
+            var providedOrders = db.Orders.Where(x => x.UserID == UserId && x.Provided == 1).ToList();
+            return Ok(providedOrders);
+        }
 
         // PUT: api/OrdersAPI/5
         [ResponseType(typeof(void))]
