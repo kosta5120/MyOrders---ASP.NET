@@ -12,7 +12,7 @@ namespace MyOrders.Models
         public string Title { get; set; }
         public string Description { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOrder { get; set; }
         public Nullable<double> Cost { get; set; }
         public string WebName { get; set; }

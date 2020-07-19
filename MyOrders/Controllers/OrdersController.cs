@@ -23,19 +23,20 @@ namespace MyOrders.Controllers
         GetUserID userID = new GetUserID();
         List<Orders> orders = new List<Orders>();
         Orders model = new Orders();
-        //TODO: Need to check why can i add new orders to user that not exsits.
+    
         #region Show all orders in the View
         // GET: MyOrders
-        
         [HttpGet]
-        public ActionResult Orders(int id)
+        public ActionResult Orders()
         {
-            ViewBag.userId = id;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("OrdersAPI/" + id.ToString()).Result;
+            ViewBag.userId = Session["UserID"].ToString();
             
+           HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("OrdersAPI/" + Session["UserID"].ToString()).Result;
+
             orders = response.Content.ReadAsAsync<List<Orders>>().Result;
-            ViewBag.Orders = orders;
-            return View();
+            //ViewBag.Orders = orders;
+            orders = orders.Where(x => x.Provided != 1).ToList();
+            return View(orders);
         }
         #endregion
 
@@ -45,10 +46,7 @@ namespace MyOrders.Controllers
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("OrdersAPI", orders).Result;
 
-            //dal.Orders.Add(orders);
-            //dal.SaveChanges();
-            //return View();
-            return Redirect("/Orders/Orders/" + orders.UserID);
+            return RedirectToAction("Orders");
         }
         #endregion
 
@@ -62,58 +60,60 @@ namespace MyOrders.Controllers
            
             ViewBag.Id = model.ID;
             ViewBag.userId = model.UserID;
-
+            
             return PartialView(model);
         }
         #endregion
 
         #region Update order
-        [HttpPost]
+ 
         public ActionResult Update(Orders orders)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("OrdersAPI/" + orders.ID.ToString(), orders).Result;
-            //return View();
-
-            return Redirect("/Orders/Orders/" + orders.UserID);
+           
+            return RedirectToAction("Orders");
         }
         #endregion
-
 
         #region Delete order
         public ActionResult Delete(int id)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("OrdersAPI/" + id.ToString()).Result;
             var model = response.Content.ReadAsStringAsync().Result;
-            //return View();
-            return Redirect("/Orders/Orders/" + userID.UserID);
+            
+            return RedirectToAction("Orders");
         }
         #endregion
 
         #region Provide order
-        public ActionResult Provided(Orders orders)
+        public ActionResult Provided(int? id)
         {
-            var url = string.Empty;
-            using (dal)
+            if(id != null )
             {
-                if (orders.ID != 0)
-                {
-                    //orders = dal.Orders.SingleOrDefault(x => x.ID == orders.ID);
-                    if (orders != null)
-                    {
-                        orders.Provided = 1;
-                        dal.Entry(orders).State = EntityState.Modified;
-                        dal.SaveChanges();
-                        url = "/Orders/Orders/" + userID.UserID;
-                    }
-                }
-                else
-                {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("OrdersAPI?OrderId=" + id.ToString()).Result;
+                model = response.Content.ReadAsAsync<Orders>().Result;
+                model.Provided = 1;
 
-                    url = "/Orders/Orders/" + userID.UserID;
-                }
-
+                return RedirectToAction("Update", model);
             }
-            return Redirect(url);
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("OrdersAPI/" + Session["UserID"].ToString()).Result;
+                orders = response.Content.ReadAsAsync<List<Orders>>().Result;
+                orders = orders.Where(x => x.Provided == 1).ToList();
+
+                return View(orders);
+            }
+           
+        }
+        #endregion
+
+        #region Log Out
+        public ActionResult LogOut()
+        {
+            Session["UserID"] = null;
+            Session.Abandon();
+            return RedirectToAction("LoginSignup", "Home");
         }
         #endregion
 

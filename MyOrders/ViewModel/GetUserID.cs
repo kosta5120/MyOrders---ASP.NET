@@ -11,29 +11,29 @@ namespace MyOrders.ViewModel
 {
     public class GetUserID 
     {
-        private int _id;
-        MyOrdersDal dal = new MyOrdersDal();
-        Orders orders = new Orders();
+        //private int _id;
+        //MyOrdersDal dal = new MyOrdersDal();
+        //Orders orders = new Orders();
 
-        public int UserID
-        {
-            get { return _id; }
-            set
-            {
+        //public int UserID
+        //{
+        //    get { return _id; }
+        //    set
+        //    {
 
-                if (value != null)
-                {
-                    _id = value;
-                    using (dal)
-                    {
-                        var query = from orders in dal.Orders
-                                    where orders.ID == _id
-                                    select orders.UserID;
+        //        if (value != null)
+        //        {
+        //            _id = value;
+        //            using (dal)
+        //            {
+        //                var query = from orders in dal.Orders
+        //                            where orders.ID == _id
+        //                            select orders.UserID;
 
-                        _id = query.First().Value;
-                    }
-                }
-            }
-        }
+        //                _id = query.First().Value;
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
